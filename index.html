@@ -597,6 +597,113 @@
       box-shadow: 0 8px 24px rgba(255, 255, 255, 0.15);
     }
 
+    /* Password screen */
+    .pw-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--navy);
+      z-index: 9999;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: opacity 0.5s;
+    }
+
+    .pw-screen.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .pw-box {
+      text-align: center;
+      padding: 48px 32px;
+      max-width: 400px;
+      width: 100%;
+    }
+
+    .pw-box h1 {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: 0.15em;
+      margin-bottom: 8px;
+    }
+
+    .pw-box p {
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.6);
+      margin-bottom: 32px;
+    }
+
+    .pw-input {
+      width: 100%;
+      padding: 14px 20px;
+      font-size: 16px;
+      font-family: 'Noto Sans JP', sans-serif;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--white);
+      outline: none;
+      transition: border-color 0.3s;
+      margin-bottom: 16px;
+      text-align: center;
+      letter-spacing: 0.1em;
+    }
+
+    .pw-input:focus {
+      border-color: var(--white);
+    }
+
+    .pw-input.error {
+      border-color: #ef4444;
+      animation: shake 0.4s ease;
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-8px); }
+      75% { transform: translateX(8px); }
+    }
+
+    .pw-submit {
+      width: 100%;
+      padding: 14px;
+      font-size: 15px;
+      font-family: 'Noto Sans JP', sans-serif;
+      font-weight: 700;
+      background: var(--white);
+      color: var(--navy);
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      letter-spacing: 0.1em;
+      transition: opacity 0.3s;
+    }
+
+    .pw-submit:hover {
+      opacity: 0.9;
+    }
+
+    .pw-error-msg {
+      font-size: 13px;
+      color: #ef4444;
+      margin-top: 12px;
+      min-height: 20px;
+    }
+
+    .site-content {
+      display: none;
+    }
+
+    .site-content.unlocked {
+      display: block;
+    }
+
     /* Footer */
     .footer {
       background-color: #111827;
@@ -655,6 +762,20 @@
   </style>
 </head>
 <body>
+
+  <!-- Password Screen -->
+  <div class="pw-screen" id="pwScreen">
+    <div class="pw-box">
+      <h1>田中三恵</h1>
+      <p>閲覧にはパスワードが必要です</p>
+      <input type="password" class="pw-input" id="pwInput" placeholder="パスワードを入力" autocomplete="off">
+      <button class="pw-submit" id="pwSubmit">ログイン</button>
+      <p class="pw-error-msg" id="pwError"></p>
+    </div>
+  </div>
+
+  <!-- Site Content (hidden until authenticated) -->
+  <div class="site-content" id="siteContent">
 
   <!-- Navigation -->
   <nav class="nav" id="nav">
@@ -870,7 +991,45 @@
     <p>&copy; 2026 田中三恵 事務所</p>
   </footer>
 
+  </div><!-- /.site-content -->
+
   <script>
+    // Password authentication (SHA-256 hashed)
+    const HASH = 'dc05bf920f994d04a96be039d38f29af888a5605882afa10c4ff3248d5f0ebdc';
+
+    async function sha256(text) {
+      const data = new TextEncoder().encode(text);
+      const buf = await crypto.subtle.digest('SHA-256', data);
+      return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('');
+    }
+
+    function unlock() {
+      document.getElementById('pwScreen').classList.add('hidden');
+      document.getElementById('siteContent').classList.add('unlocked');
+      sessionStorage.setItem('pw_ok', '1');
+    }
+
+    // Check if already authenticated in this session
+    if (sessionStorage.getItem('pw_ok') === '1') {
+      unlock();
+    }
+
+    document.getElementById('pwSubmit').addEventListener('click', async () => {
+      const input = document.getElementById('pwInput');
+      const hash = await sha256(input.value);
+      if (hash === HASH) {
+        unlock();
+      } else {
+        input.classList.add('error');
+        document.getElementById('pwError').textContent = 'パスワードが正しくありません';
+        setTimeout(() => input.classList.remove('error'), 400);
+      }
+    });
+
+    document.getElementById('pwInput').addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') document.getElementById('pwSubmit').click();
+    });
+
     // Navbar scroll effect
     const nav = document.getElementById('nav');
     window.addEventListener('scroll', () => {
