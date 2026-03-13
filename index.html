@@ -503,6 +503,100 @@
       border-color: var(--white);
     }
 
+    /* Nav X icon */
+    .nav-x-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.15);
+      color: var(--white);
+      text-decoration: none;
+      transition: background 0.3s, color 0.3s;
+      flex-shrink: 0;
+    }
+
+    .nav-x-link:hover {
+      background: rgba(255, 255, 255, 0.3);
+    }
+
+    .nav.scrolled .nav-x-link {
+      background: var(--navy);
+      color: var(--white);
+    }
+
+    .nav.scrolled .nav-x-link:hover {
+      background: var(--main);
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    /* X CTA Banner */
+    .x-cta {
+      background: #000000;
+      padding: 60px 24px;
+      text-align: center;
+    }
+
+    .x-cta-inner {
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    .x-cta-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: var(--white);
+      color: #000;
+      margin-bottom: 24px;
+    }
+
+    .x-cta-heading {
+      font-family: 'Noto Serif JP', serif;
+      font-size: clamp(20px, 4vw, 28px);
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 12px;
+      letter-spacing: 0.08em;
+    }
+
+    .x-cta-sub {
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.7);
+      margin-bottom: 32px;
+      line-height: 1.8;
+    }
+
+    .x-cta-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--white);
+      color: #000;
+      font-size: 16px;
+      font-weight: 700;
+      text-decoration: none;
+      padding: 16px 48px;
+      border-radius: 50px;
+      letter-spacing: 0.05em;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .x-cta-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(255, 255, 255, 0.15);
+    }
+
     /* Footer */
     .footer {
       background-color: #111827;
@@ -573,11 +667,16 @@
         <li><a href="#gallery">活動紹介</a></li>
         <li><a href="#contact">お問い合わせ</a></li>
       </ul>
-      <button class="hamburger" id="hamburgerBtn" aria-label="メニュー">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
+      <div class="nav-right">
+        <a href="https://x.com/mie_tanaka03?s=11" target="_blank" rel="noopener noreferrer" class="nav-x-link" aria-label="X (Twitter)">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        </a>
+        <button class="hamburger" id="hamburgerBtn" aria-label="メニュー">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
     </div>
   </nav>
 
@@ -590,6 +689,12 @@
       <li><a href="#pillars">私の想い</a></li>
       <li><a href="#gallery">活動紹介</a></li>
       <li><a href="#contact">お問い合わせ</a></li>
+      <li style="margin-top: 12px;">
+        <a href="https://x.com/mie_tanaka03?s=11" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 8px;">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" style="color: white;"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          X (Twitter)
+        </a>
+      </li>
     </ul>
   </div>
 
@@ -735,6 +840,21 @@
     </div>
   </section>
 
+  <!-- X CTA Banner -->
+  <section class="x-cta fade-in">
+    <div class="x-cta-inner">
+      <div class="x-cta-icon">
+        <svg viewBox="0 0 24 24" width="32" height="32" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+      </div>
+      <h2 class="x-cta-heading">最新情報は X でお届けしています</h2>
+      <p class="x-cta-sub">活動報告や阿蘇の日常など、日々の発信をぜひフォローしてください。</p>
+      <a href="https://x.com/mie_tanaka03?s=11" target="_blank" rel="noopener noreferrer" class="x-cta-button">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        @mie_tanaka03 をフォロー
+      </a>
+    </div>
+  </section>
+
   <!-- Contact -->
   <section class="section contact" id="contact">
     <div class="section-inner fade-in">
@@ -742,12 +862,6 @@
       <p class="section-title-en">Contact</p>
       <p class="contact-text">ご意見・ご質問など、お気軽にお問い合わせください。</p>
       <a href="mailto:tanaka.mie.kumamoto01@gmail.com" class="contact-email">tanaka.mie.kumamoto01@gmail.com</a>
-      <div style="margin-top: 20px;">
-        <a href="https://x.com/mie_tanaka03?s=11" target="_blank" rel="noopener noreferrer" class="contact-email" style="display: inline-flex; align-items: center; gap: 8px;">
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-          X (Twitter)
-        </a>
-      </div>
     </div>
   </section>
 
