@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>田中三恵 | 熊本県議会議員候補（阿蘇郡区）</title>
+  <meta name="description" content="田中三恵 - 故郷への恩返し、熊本の未来のために。2027年統一地方選挙 熊本県議会議員候補（阿蘇郡区）">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Serif+JP:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --main: #1a56db;
+      --navy: #1e293b;
+      --accent: #b8860b;
+      --bg: #fafaf8;
+      --text: #1f2937;
+      --white: #ffffff;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+      color: var(--text);
+      background-color: var(--bg);
+      line-height: 1.8;
+      font-weight: 400;
+      overflow-x: hidden;
+    }
+
+    /* Navigation */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 100;
+      padding: 16px 24px;
+      transition: background-color 0.3s, box-shadow 0.3s;
+    }
+
+    .nav.scrolled {
+      background-color: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+      backdrop-filter: blur(10px);
+    }
+
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-logo {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--white);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .nav.scrolled .nav-logo {
+      color: var(--navy);
+    }
+
+    .nav-links {
+      display: none;
+      list-style: none;
+      gap: 28px;
+    }
+
+    .nav-links a {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--white);
+      text-decoration: none;
+      transition: color 0.3s;
+      letter-spacing: 0.05em;
+    }
+
+    .nav.scrolled .nav-links a {
+      color: var(--text);
+    }
+
+    .nav.scrolled .nav-links a:hover {
+      color: var(--main);
+    }
+
+    /* Hamburger */
+    .hamburger {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+
+    .hamburger span {
+      width: 24px;
+      height: 2px;
+      background: var(--white);
+      transition: background 0.3s, transform 0.3s;
+    }
+
+    .nav.scrolled .hamburger span {
+      background: var(--navy);
+    }
+
+    /* Mobile menu */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(30, 41, 59, 0.97);
+      z-index: 200;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .mobile-menu.open {
+      display: flex;
+    }
+
+    .mobile-menu-close {
+      position: absolute;
+      top: 20px;
+      right: 24px;
+      background: none;
+      border: none;
+      color: var(--white);
+      font-size: 32px;
+      cursor: pointer;
+    }
+
+    .mobile-menu ul {
+      list-style: none;
+      text-align: center;
+    }
+
+    .mobile-menu li {
+      margin-bottom: 28px;
+    }
+
+    .mobile-menu a {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 20px;
+      color: var(--white);
+      text-decoration: none;
+      letter-spacing: 0.1em;
+    }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      min-height: 600px;
+      overflow: hidden;
+    }
+
+    .hero-image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 20%;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        to bottom,
+        rgba(30, 41, 59, 0.3) 0%,
+        rgba(30, 41, 59, 0.1) 40%,
+        rgba(30, 41, 59, 0.5) 100%
+      );
+    }
+
+    .hero-content {
+      position: absolute;
+      bottom: 12%;
+      left: 0;
+      width: 100%;
+      text-align: center;
+      color: var(--white);
+      padding: 0 24px;
+    }
+
+    .hero-catchcopy {
+      font-family: 'Noto Serif JP', serif;
+      font-size: clamp(20px, 5vw, 36px);
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      margin-bottom: 20px;
+      text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .hero-name {
+      font-family: 'Noto Serif JP', serif;
+      font-size: clamp(36px, 8vw, 64px);
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      margin-bottom: 4px;
+      text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .hero-name-en {
+      font-size: clamp(12px, 2vw, 16px);
+      font-weight: 300;
+      letter-spacing: 0.3em;
+      margin-bottom: 12px;
+      opacity: 0.9;
+    }
+
+    .hero-title {
+      font-size: clamp(13px, 2.5vw, 18px);
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      opacity: 0.9;
+    }
+
+    .scroll-indicator {
+      position: absolute;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      animation: bounce 2s ease infinite;
+    }
+
+    .scroll-indicator svg {
+      width: 28px;
+      height: 28px;
+      stroke: var(--white);
+      opacity: 0.7;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(10px); }
+    }
+
+    /* Sections common */
+    .section {
+      padding: 80px 24px;
+    }
+
+    .section-title {
+      font-family: 'Noto Serif JP', serif;
+      font-size: clamp(24px, 4vw, 32px);
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 8px;
+      color: var(--navy);
+      letter-spacing: 0.1em;
+    }
+
+    .section-title-en {
+      font-size: 12px;
+      font-weight: 400;
+      text-align: center;
+      color: var(--main);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 48px;
+    }
+
+    .section-inner {
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    /* Fade-in animation */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Message section */
+    .message {
+      background-color: var(--white);
+    }
+
+    .message-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .message-image {
+      width: 100%;
+      border-radius: 8px;
+      object-fit: cover;
+      aspect-ratio: 4 / 3;
+    }
+
+    .message-text p {
+      margin-bottom: 20px;
+      font-size: 15px;
+      line-height: 2;
+    }
+
+    .message-text p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Profile section */
+    .profile-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 40px;
+      align-items: start;
+    }
+
+    .profile-image {
+      width: 100%;
+      border-radius: 8px;
+      object-fit: cover;
+      aspect-ratio: 3 / 4;
+    }
+
+    .profile-info h3 {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 4px;
+      color: var(--navy);
+    }
+
+    .profile-info .name-reading {
+      font-size: 14px;
+      color: #6b7280;
+      margin-bottom: 20px;
+    }
+
+    .profile-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .profile-table tr {
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .profile-table th {
+      font-weight: 500;
+      font-size: 14px;
+      color: var(--main);
+      padding: 12px 16px 12px 0;
+      vertical-align: top;
+      white-space: nowrap;
+      text-align: left;
+      width: 80px;
+    }
+
+    .profile-table td {
+      font-size: 14px;
+      padding: 12px 0;
+      line-height: 1.8;
+    }
+
+    /* Pillars section */
+    .pillars {
+      background-color: var(--white);
+    }
+
+    .pillar-cards {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+
+    .pillar-card {
+      border-radius: 12px;
+      overflow: hidden;
+      background: var(--bg);
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+    }
+
+    .pillar-card-image {
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      object-fit: cover;
+    }
+
+    .pillar-card-body {
+      padding: 28px 24px;
+    }
+
+    .pillar-number {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 14px;
+      color: var(--accent);
+      font-weight: 700;
+      margin-bottom: 8px;
+      letter-spacing: 0.1em;
+    }
+
+    .pillar-card-title {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 12px;
+      line-height: 1.5;
+    }
+
+    .pillar-card-text {
+      font-size: 14px;
+      line-height: 1.9;
+      color: #4b5563;
+    }
+
+    /* Gallery section */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .gallery-item {
+      border-radius: 8px;
+      overflow: hidden;
+      aspect-ratio: 1;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.05);
+    }
+
+    /* Contact section */
+    .contact {
+      background-color: var(--navy);
+      color: var(--white);
+      text-align: center;
+    }
+
+    .contact .section-title {
+      color: var(--white);
+    }
+
+    .contact .section-title-en {
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    .contact-text {
+      font-size: 15px;
+      margin-bottom: 24px;
+      opacity: 0.9;
+    }
+
+    .contact-email {
+      display: inline-block;
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--white);
+      text-decoration: none;
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      padding: 14px 36px;
+      border-radius: 4px;
+      letter-spacing: 0.05em;
+      transition: background-color 0.3s, border-color 0.3s;
+    }
+
+    .contact-email:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+      border-color: var(--white);
+    }
+
+    /* Footer */
+    .footer {
+      background-color: #111827;
+      color: rgba(255, 255, 255, 0.5);
+      text-align: center;
+      padding: 24px;
+      font-size: 12px;
+      letter-spacing: 0.05em;
+    }
+
+    /* Tablet and up */
+    @media (min-width: 768px) {
+      .nav-links {
+        display: flex;
+      }
+
+      .hamburger {
+        display: none;
+      }
+
+      .section {
+        padding: 120px 48px;
+      }
+
+      .message-grid {
+        grid-template-columns: 2fr 3fr;
+        gap: 60px;
+      }
+
+      .profile-grid {
+        grid-template-columns: 1fr 2fr;
+        gap: 60px;
+      }
+
+      .pillar-cards {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 28px;
+      }
+
+      .gallery-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+      }
+    }
+
+    /* Desktop */
+    @media (min-width: 1024px) {
+      .section-inner {
+        max-width: 1080px;
+      }
+
+      .gallery-grid {
+        gap: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">田中三恵</a>
+      <ul class="nav-links">
+        <li><a href="#message">ご挨拶</a></li>
+        <li><a href="#profile">プロフィール</a></li>
+        <li><a href="#pillars">私の想い</a></li>
+        <li><a href="#gallery">活動紹介</a></li>
+        <li><a href="#contact">お問い合わせ</a></li>
+      </ul>
+      <button class="hamburger" id="hamburgerBtn" aria-label="メニュー">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <button class="mobile-menu-close" id="mobileMenuClose" aria-label="閉じる">&times;</button>
+    <ul>
+      <li><a href="#message">ご挨拶</a></li>
+      <li><a href="#profile">プロフィール</a></li>
+      <li><a href="#pillars">私の想い</a></li>
+      <li><a href="#gallery">活動紹介</a></li>
+      <li><a href="#contact">お問い合わせ</a></li>
+    </ul>
+  </div>
+
+  <!-- Hero -->
+  <section class="hero" id="hero">
+    <img src="src/images/IMG_4118.JPG" alt="阿蘇の草原に立つ田中三恵" class="hero-image">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <p class="hero-catchcopy">故郷への恩返し、熊本の未来のために。</p>
+      <h1 class="hero-name">田中三恵</h1>
+      <p class="hero-name-en">TANAKA MIE</p>
+      <p class="hero-title">熊本県議会議員候補（阿蘇郡区）</p>
+    </div>
+    <div class="scroll-indicator">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="6 9 12 15 18 9"></polyline>
+      </svg>
+    </div>
+  </section>
+
+  <!-- Message -->
+  <section class="section message" id="message">
+    <div class="section-inner fade-in">
+      <h2 class="section-title">ご挨拶</h2>
+      <p class="section-title-en">Message</p>
+      <div class="message-grid">
+        <img src="src/images/IMG_4108.JPG" alt="阿蘇の風景をバックに笑顔の田中三恵" class="message-image">
+        <div class="message-text">
+          <p>阿蘇の山奥で生まれ育ち、父は私が7歳の時に事故で寝たきりになりました。母は顔を見たことがないまま死に別れました。</p>
+          <p>幼い頃から要介護認定のなかで最も重たい状態の父と暮らす生活でしたが、家族や親戚、地域の皆さんがいつも笑顔で接してくれ、日本の医療・福祉・教育・社会保障制度等の支援のおかげで、今の私がいます。</p>
+          <p>どんな環境で生まれ育っても、未来を諦めることなく歩むことができたのも、家族・故郷の皆さんのおかげであり、日本に生まれたからだと思っております。</p>
+          <p>今は亡き、大正生まれの祖父は大東亜戦争時、出兵しました。先人たちのおかげで今があることの重み、日本人であることの誇りを教えてもらいました。</p>
+          <p>故郷・熊本へのご恩返しを胸に、新しい時代の熊本の未来のため、志を高く掲げ、熊本県議会議員選挙に挑戦したいと存じます。</p>
+          <p>どうか共に歩んで下さいませ。宜しくお願い申し上げます。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Profile -->
+  <section class="section" id="profile">
+    <div class="section-inner fade-in">
+      <h2 class="section-title">プロフィール</h2>
+      <p class="section-title-en">Profile</p>
+      <div class="profile-grid">
+        <img src="src/images/IMG_4112.JPG" alt="田中三恵 ポートレート" class="profile-image">
+        <div class="profile-info">
+          <h3>田中 三恵</h3>
+          <p class="name-reading">たなか みえ / Mie Tanaka</p>
+          <table class="profile-table">
+            <tr>
+              <th>生年月日</th>
+              <td>平成2（1990）年5月2日生まれ</td>
+            </tr>
+            <tr>
+              <th>出身地</th>
+              <td>熊本県阿蘇郡南小国町</td>
+            </tr>
+            <tr>
+              <th>学歴</th>
+              <td>
+                上智大学 文学部 新聞学科 卒業<br>
+                上智大学院 文学研究科 新聞学専攻 修士課程修了
+              </td>
+            </tr>
+            <tr>
+              <th>職歴</th>
+              <td>
+                エンターテイメント会社勤務<br>
+                平成29年〜 参議院議員 有村治子 秘書<br>
+                <span style="font-size:12px; color:#6b7280;">（高市早苗総理・総裁のもと自由民主党 総務会長）</span>
+              </td>
+            </tr>
+            <tr>
+              <th>家族</th>
+              <td>子育て中の母親</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pillars -->
+  <section class="section pillars" id="pillars">
+    <div class="section-inner fade-in">
+      <h2 class="section-title">私の想い</h2>
+      <p class="section-title-en">Vision</p>
+      <div class="pillar-cards">
+        <div class="pillar-card">
+          <img src="src/images/IMG_4104.JPG" alt="慰霊碑に祈りを捧げる田中三恵" class="pillar-card-image">
+          <div class="pillar-card-body">
+            <p class="pillar-number">01</p>
+            <h3 class="pillar-card-title">誰もが安心して<br>暮らせる社会を</h3>
+            <p class="pillar-card-text">幼い頃に父が寝たきりとなり、母とも死別。日本の医療・福祉・社会保障制度に支えられたからこそ、この制度を守り、さらに充実させたい。</p>
+          </div>
+        </div>
+        <div class="pillar-card">
+          <img src="src/images/IMG_4111.JPG" alt="お子さんとピアノを弾く田中三恵" class="pillar-card-image">
+          <div class="pillar-card-body">
+            <p class="pillar-number">02</p>
+            <h3 class="pillar-card-title">子育て世代の声を<br>県政に</h3>
+            <p class="pillar-card-text">子育て中の母親だからこそわかる、医療・教育・福祉の現場の声。安心して子どもを産み育てられる熊本をつくる。</p>
+          </div>
+        </div>
+        <div class="pillar-card">
+          <img src="src/images/IMG_4117.JPG" alt="山頂から阿蘇を見渡す田中三恵" class="pillar-card-image">
+          <div class="pillar-card-body">
+            <p class="pillar-number">03</p>
+            <h3 class="pillar-card-title">国政の経験を<br>阿蘇の力に</h3>
+            <p class="pillar-card-text">参議院議員秘書として培った政策立案力と実務経験を、故郷・阿蘇の発展のために活かす。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery -->
+  <section class="section" id="gallery">
+    <div class="section-inner fade-in">
+      <h2 class="section-title">活動紹介</h2>
+      <p class="section-title-en">Gallery</p>
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <img src="src/images/IMG_4101.JPG" alt="地元商店との交流">
+        </div>
+        <div class="gallery-item">
+          <img src="src/images/IMG_4102.JPG" alt="黒川温泉イベント参加">
+        </div>
+        <div class="gallery-item">
+          <img src="src/images/IMG_4121.JPG" alt="地元農家さんとの交流">
+        </div>
+        <div class="gallery-item">
+          <img src="src/images/IMG_4103.JPG" alt="阿蘇神社にて">
+        </div>
+        <div class="gallery-item">
+          <img src="src/images/IMG_4109.JPG" alt="地元酒造の紹介">
+        </div>
+        <div class="gallery-item">
+          <img src="src/images/IMG_4113.JPG" alt="お子さんとの日常">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="section contact" id="contact">
+    <div class="section-inner fade-in">
+      <h2 class="section-title">お問い合わせ</h2>
+      <p class="section-title-en">Contact</p>
+      <p class="contact-text">ご意見・ご質問など、お気軽にお問い合わせください。</p>
+      <a href="mailto:tanaka.mie.kumamoto01@gmail.com" class="contact-email">tanaka.mie.kumamoto01@gmail.com</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>&copy; 2026 田中三恵 事務所</p>
+  </footer>
+
+  <script>
+    // Navbar scroll effect
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    // Mobile menu
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const mobileMenuClose = document.getElementById('mobileMenuClose');
+
+    hamburgerBtn.addEventListener('click', () => {
+      mobileMenu.classList.add('open');
+    });
+
+    mobileMenuClose.addEventListener('click', () => {
+      mobileMenu.classList.remove('open');
+    });
+
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.remove('open');
+      });
+    });
+
+    // Scroll fade-in
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
